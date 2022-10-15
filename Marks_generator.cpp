@@ -53,7 +53,7 @@ int main()
     bool res=true;
     while(res)
     {
-        cout<<"Details of the student : \n1)Input the details\n2)Exit\n\nEnter the choice : ";cin>>n;
+        cout<<"Details of the student : \n1)Input the details\n2)Display the Marks\n3)Display the Average Marks\n4)Exit\n\nEnter the choice : ";cin>>n;
         switch(n)
         {
             case 1:
@@ -69,7 +69,21 @@ int main()
 		            cl1_chem[i].GenerateMarks(5);
 		            cl1_math[i].GenerateMarks(2);
 	            }
-	            cout << "\nThe total marks of each student of a class in Physics, Chemistry and Mathematics: \n\n";
+                cout<<"-------------------------------------------------------------------------------------"<<endl;
+                break;
+            }
+            case 2:
+            {
+                Physics *cl1_phys = new Physics[num]; 
+	            Chemistry *cl1_chem = new Chemistry[num]; 
+	            Mathematics *cl1_math = new Mathematics[num];
+	            for (int i = 0; i < num; i++) { 
+		            cl1_phys[i].rollNumber = cl1_chem[i].rollNumber = cl1_math[i].rollNumber = i + 1;
+		            cl1_phys[i].GenerateMarks(9);
+		            cl1_chem[i].GenerateMarks(5);
+		            cl1_math[i].GenerateMarks(2);
+	            }
+                cout << "\nThe total marks of each student of a class in Physics, Chemistry and Mathematics: \n\n";
 	            for (int i = 0; i < num; i++) { 
 		            cout << "Roll number of student is " << cl1_phys[i].rollNumber << endl;
 		            cout << "The total marks in Physics is " << cl1_phys[i].sum_of_marks() << endl;
@@ -78,7 +92,20 @@ int main()
 		            cout << endl;
 	            }
 	            cout << endl << "-------------------------------------------------------------------------------------" << endl;
-	            cout << "\nThe average marks : \n\n";
+	            break;
+            }   
+            case 3:
+            {
+                Physics *cl1_phys = new Physics[num]; 
+	            Chemistry *cl1_chem = new Chemistry[num]; 
+	            Mathematics *cl1_math = new Mathematics[num];
+	            for (int i = 0; i < num; i++) { 
+		            cl1_phys[i].rollNumber = cl1_chem[i].rollNumber = cl1_math[i].rollNumber = i + 1;
+		            cl1_phys[i].GenerateMarks(9);
+		            cl1_chem[i].GenerateMarks(5);
+		            cl1_math[i].GenerateMarks(2);
+	            }
+                cout << "\nThe average marks : \n\n";
 	            for (int i = 0; i < num; i++) { // averages of marks
 		            cout << "Roll number of student is " << cl1_phys[i].rollNumber << endl;
 		            cout << "The average mark in Physics is " << cl1_phys[i].avarage() << endl;
@@ -89,7 +116,7 @@ int main()
                 cout<<"-------------------------------------------------------------------------------------"<<endl;
                 break;
             }
-            case 2:
+            case 4:
             {
                cout<<"-------------------------------------------------------------------------------------"<<endl;
                cout<<"Thank You"<<endl;
