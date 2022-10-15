@@ -9,35 +9,33 @@ struct SEIT
 };
 class Student
 {
-    struct SEIT stud[5];
+    struct SEIT stud[15];
 public:
     void input();
     void display();
     void display_topper();
-    void search_roll_no_binery_search();
+    void search_roll_no();
     void search_name();
     void search_sgpa();
-    void sort_roll_no_bubble_sort();
-    void sort_roll_no_insertion_sort();
-    void sort_roll_no_quick_sort();
-    int elementPartition(int less,int more,int pivot);
-    void demoquickSort(int less,int greater);
+    void sort_roll_no();
+    void sort_sgpa();
+    void topper();
 };
 
 void Student::input()
 {
-    for (int i = 0; i <5; i++)
+    for (int i = 0; i <15; i++)
     {
-        cout<<"Enter your roll_no : "<<i<<" : ";cin>>stud[i].roll_no;cout<<endl;
-        cout<<"Enter your Name : "<<i<<" : ";cin>>stud[i].name;cout<<endl;
-        cout<<"Enter your SGPA : "<<i<<" : ";cin>>stud[i].sgpa;cout<<endl;
+        cout<<"Enter your roll_no : "<<i+1<<" : ";cin>>stud[i].roll_no;cout<<endl;
+        cout<<"Enter your Name : "<<i+1<<" : ";cin>>stud[i].name;cout<<endl;
+        cout<<"Enter your SGPA : "<<i+1<<" : ";cin>>stud[i].sgpa;cout<<endl;
         cout<<"-------------------------------------------------------------------------------------"<<endl;
     }
 }
 void Student::display()
 {
     cout<<"Roll_no  Name   SGPA "<<endl;
-    for (int i = 0; i <5; i++)
+    for (int i = 0; i <15; i++)
     {
         cout<<stud[i].roll_no<<"\t ";
         cout<<stud[i].name<<"\t";
@@ -45,9 +43,9 @@ void Student::display()
     }
 }
 
-void Student::search_roll_no_binery_search()
+void Student::search_roll_no()
 {
-    int l=0,h=4,ans=-1;
+    int l=0,h=14,ans=-1;
     float k;
     cout<<"Enter the roll_no : ";
     cin>>k;
@@ -76,7 +74,7 @@ void Student::search_name()
     string na;
     cout<<"->Enter the name : ";
     cin>>na;
-    for(int i=0;i<5;i++){
+    for(int i=0;i<15;i++){
         if(na==stud[i].name){
             cout<<"-->The Roll of the given name : "<<stud[i].roll_no<<endl;
             return;
@@ -90,7 +88,7 @@ void Student::search_sgpa()
     int counter=0;
     cout<<"->Enter the sgpa : ";
     cin>>sg;
-    for(int i=0;i<5;i++){
+    for(int i=0;i<15;i++){
         if(sg==stud[i].sgpa){
             cout<<"-->The roll no of the given sgpa : "<<stud[i].roll_no<<endl;
         }
@@ -100,60 +98,36 @@ void Student::search_sgpa()
         cout<<"-->Given SGPA is not in the database ."<<endl;
     }
 }
-void Student::sort_roll_no_bubble_sort()
+void Student::sort_roll_no()
 {
     int i, j;
-    for (i = 0; i < 4; i++){
-        for (j = 0; j < 4 - i; j++){
+    for (i = 0; i < 14; i++){
+        for (j = 0; j < 14 - i; j++){
             if (stud[j].roll_no > stud[j + 1].roll_no){
                 swap(stud[j].roll_no, stud[j+1].roll_no);
             }
         }
     }
 }
-void Student::sort_roll_no_insertion_sort(){
-    int i, key, j; 
-    for (i = 0; i < 5; i++)
-    { 
-        key = stud[i].roll_no; 
-        j = i - 1; 
-        while (j >= 0 && stud[j].roll_no > key)
-        { 
-            stud[j + 1].roll_no = stud[j].roll_no; 
-            j = j - 1; 
-        } 
-        stud[j + 1].roll_no = key; 
-    }  
-}
-int Student::elementPartition(int low, int high,int pivot)
+void Student::sort_sgpa()
 {
-    low=1,high=4,pivot = stud[high].roll_no;
-    int i = low;
-    int j=low; 
-    while(i<=high)
-    {
-        if (stud[j].roll_no > pivot)
-        {
-            i++;
-        }
-        else{
-            int temp = stud[i].sgpa;
-            stud[i].roll_no = stud[j].roll_no;
-            stud[j].roll_no = temp;
-            i++;
-            j++;
+    int i, j;
+    for (i = 0; i < 14; i++){
+        for (j = 0; j < 14 - i; j++){
+            if (stud[j].sgpa > stud[j + 1].sgpa){
+                swap(stud[j].sgpa, stud[j+1].sgpa);
+            }
         }
     }
-    return j-1;
 }
-void Student ::demoquickSort(int low, int high)
+void Student::topper()
 {
-    if (low < high)
+    cout<<"Roll_no  Name   SGPA "<<endl;
+    for (int i = 0; i <3; i++)
     {
-        int pivot=stud[4].roll_no;
-        int pi = elementPartition(low, high,pivot);
-        demoquickSort(low, pi-1);
-        demoquickSort(pi+1, high);
+        cout<<stud[i].roll_no<<"\t ";
+        cout<<stud[i].name<<"\t";
+        cout<<stud[i].sgpa<<endl;
     }
 }
 int main()
@@ -163,7 +137,7 @@ int main()
     bool go=true;
     while(go){
         cout<<"\nThe operation on the database : \n"<<endl;
-        cout<<"1) Input/Change details "<<endl<<"2) Display the details "<<endl<<"3) Search the Roll No by binary search "<<endl<<"4) Search the Name by linear search"<<endl<<"5) Search the SGPA by linear search"<<endl<<"6) Sorting the Roll No by bubble sort "<<endl<<"7) Sorting the Roll No by insertion sort "<<endl<<"8) Sorting the Roll No by quick sort(Topper list) "<<endl<<"9) Exit "<<endl; 
+        cout<<"1) Input/Change details(upto to 15 students only)"<<endl<<"2) Display the details "<<endl<<"3) Search the Roll No"<<endl<<"4) Search the Name "<<endl<<"5) Search the SGPA "<<endl<<"6) Sorting the SGPA"<<endl<<"7) Sorting the Roll No"<<endl<<"8) Topper list "<<endl<<"9) Exit "<<endl; 
         cout<<"-------------------------------------------------------------------------------------"<<endl; 
         cout<<"\nEnter the choice : ";cin>>n;
         cout<<"\n-------------------------------------------------------------------------------------\n"<<endl;
@@ -177,8 +151,8 @@ int main()
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break;
         case 3:
-            S.sort_roll_no_bubble_sort();
-            S.search_roll_no_binery_search();
+            S.sort_roll_no();
+            S.search_roll_no();
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break;
         case 4:
@@ -190,18 +164,18 @@ int main()
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break;
         case 6:
-            S.sort_roll_no_bubble_sort();
+            S.sort_sgpa();
             S.display();
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break;
         case 7:
-            S.sort_roll_no_insertion_sort();
+            S.sort_roll_no();
             S.display();
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break; 
         case 8:
-            //S.demoquickSort(1,4);
-            S.display();
+            S.sort_sgpa();
+            S.topper();
             cout<<"-------------------------------------------------------------------------------------"<<endl;
             break;   
         case 9:
