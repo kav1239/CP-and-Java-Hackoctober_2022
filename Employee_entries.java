@@ -1,12 +1,10 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-public class employee                                                 //Creation of Employee Class                                                        
+public class employee                                                //Creation of Employee Class                                                        
 {
     String name,address,mailid,mobile_no,empid;
     double bp,da,hra,pf,gross_salary,club_fund,net_salary;
-
     employee()
     {
         name=null;
@@ -208,52 +206,56 @@ public class employee                                                 //Creation
     
     public static void main(String args[]){
         int n;
+        employee obj=new employee();                                                 //Creation of employee object
+        programmer p =obj.new programmer();
+        team_leader t =obj.new team_leader();
+        Assistant_manager a =obj.new Assistant_manager();
+        Project_manager m =obj.new Project_manager();
         Scanner sc = new Scanner(System.in);
         System.out.println("\nEmployee Salary Entries :-");
         boolean cas=true;
         while(cas)
         {
-            System.out.println("\nThe choice for Employee :\nEnter choice:1) for Programmer\nEnter choice:2) for Team Leader\nEnter choice:3) for Assitant Manager\nEnter choice:4) for Project Manager\nEnter the choice:5) Exit\n");
+            System.out.println("\nThe choice for Employee :\nEnter choice:1) for Fresher for details\nEnter choice:2) for Fresher for displaying details\nEnter choice:3) for Junior Manager for details\nEnter choice:4) for Junior Manager for display details\nEnter choice:5) for Senior Manager for details\nEnter choice:6) for Senior Manager for dispaly details\nEnter choice:7) for Regional Manager for details\nEnter choice:8) for Regional Manager for display details\nEnter the choice:9) Exit\n");
             System.out.println("--------------------------------------------------------------------------------");
             System.out.print("Enter your choice : ");
             n=sc.nextInt();
-            switch(n)                                                 //Switch case for output based on choice         
-            {                                
-                case 1:
-                    employee obj=new employee();                                                 //Creation of employee object
-                    programmer p =obj.new programmer();                                                 //Creation of programmer object
-                    p.getinfo_programmer();
-                    p.displayinfo_programmer();
-                    break;
-                case 2:
-                    employee team=new employee();                                                 //Creation of employee object
-                    team_leader t =team.new team_leader();                                                 //Creation of team leader object
-                    t.getinfo_team();
-                    t.displayinfo_team();
-                    break;
-                case 3:
-                    employee assist=new employee();                                                 //Creation of employee object
-                    Assistant_manager a =assist.new Assistant_manager();                                                 //Creation of Assistant manager object
-                    a.getinfo_manager();
-                    a.displayinfo_manager();
-                    break;
-                case 4:
-                    employee project=new employee();                                                 //Creation of employee object
-                    Project_manager m =project.new Project_manager();                                                 //Creation of project manager object
-                    m.getinfo_project();
-                    m.displayinfo_project();
-                    break;
-                case 5:
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("\nThank you for using Employee's Salary entries\n");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    cas=false;
-                    break;
-                default:
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("\nInvalid Choice. Try again.");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    break;
+            if(n==1){                                             //Creation of programmer object
+                p.getinfo_programmer();
+            }
+            else if(n==2){
+                p.displayinfo_programmer();
+            }
+            else if(n==3)
+            {                                            //Creation of team leader object
+                t.getinfo_team();
+            }
+            else if(n==4)
+            {
+                t.displayinfo_team();
+            }
+            else if(n==5){                                                 //Creation of Assistant manager object
+                a.getinfo_manager();
+            }
+            else if(n==6){
+                a.displayinfo_manager();
+            }
+            else if(n==7){                                               //Creation of project manager object
+                m.getinfo_project();
+            }
+            else if(n==8){
+                m.displayinfo_project();
+            }
+            else if(n==9){
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("\nThank you for using Employee's Salary entries\n");
+                System.out.println("--------------------------------------------------------------------------------");
+                cas=false;
+            }
+            else if(n==10){
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("\nInvalid Choice. Try again.");
+                System.out.println("--------------------------------------------------------------------------------");
             }
         }
     }
