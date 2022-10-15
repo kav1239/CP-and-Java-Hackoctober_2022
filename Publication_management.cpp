@@ -32,15 +32,15 @@ void Publishing::input_cassette()
 }
 void Publishing::display_book()
 {
-    cout<<book_name<<"\t ";
-    cout<<book_price<<"\t";
+    cout<<book_name<<"\t\t";
+    cout<<book_price<<"\t\t\t";
     cout<<no_pages<<endl;
 }
 void Publishing::display_cassette()
 {
-    cout<<cassette_name<<"\t ";
-    cout<<cassette_price<<"\t";
-    cout<<record<<"\t";
+    cout<<cassette_name<<"\t\t";
+    cout<<cassette_price<<"\t\t\t";
+    cout<<record<<endl;
 }
 int main()
 {
@@ -69,8 +69,12 @@ int main()
                     switch (v)
                     {
                         case 1:
-                            for(int i=0;i<f;i++)
-                            b[i].input_book();
+                            cout<<"Entries for "<<f<<" book\n";
+                            cout<<"-------------------------------------------------------------------------------------\n"<<endl;
+                            for(int i=0;i<f;i++){
+                                cout<<"Book "<<i+1<<endl;
+                                b[i].input_book();
+                            }
                             break;
                         case 2:
                             cout<<"Book Name\tBook Price\tNumber of pages of Book"<<endl;
@@ -107,9 +111,13 @@ int main()
                     cout<<"\n-------------------------------------------------------------------------------------\n"<<endl;
                     switch (n)
                    {
+                       cout<<"-------------------------------------------------------------------------------------\n"<<endl;
                         case 1:
-                            for(int i=0;i<t;i++)
-                            a[i].input_cassette();
+                            cout<<"Entries of "<<t<<" cassette\n";
+                            for(int i=0;i<t;i++){
+                                cout<<"Cassette "<<i+1<<endl;
+                                a[i].input_cassette();
+                            }
                             break;
                         case 2:
                             cout<<"Cassette Name\tCassette Price\tTotal recording of cassette(in min)"<<endl;
@@ -138,7 +146,7 @@ int main()
             default:
                 cout<<"Invalid choice"<<endl;
                 cout<<"-------------------------------------------------------------------------------------"<<endl;
-                break;           
+                break;          
         }
     }
     return 0;
